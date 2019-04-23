@@ -26,7 +26,7 @@ class App extends Component {
     }
 
     addQuestion(question) {
-        fetch('http://localhost:8080/api/questions', {
+        fetch( `${this.API_URL}/questions`, {
             method: 'POST',
             body: JSON.stringify(question),
             headers: {
@@ -42,7 +42,7 @@ class App extends Component {
     }
 
     addAnswer(answer) {
-        fetch('http://localhost:8080/api/answers', {
+        fetch(`${this.API_URL}/answers`, {
             method: 'POST',
             body: JSON.stringify(answer),
             headers: {
@@ -58,7 +58,7 @@ class App extends Component {
     }
 
     getAnswers(question_id) {
-        fetch('http://localhost:8080/api/answers/to/' + question_id)
+        fetch(`${this.API_URL}/answers/to/${question_id}`)
             .then(response => response.json())
             .then(json => {
                 console.log("##");
