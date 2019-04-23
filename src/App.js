@@ -6,6 +6,7 @@ import QuestionList from './QuestionList';
 import NotFound from './NotFound';
 
 class App extends Component {
+    API_URL = process.env.REACT_APP_API_URL;
 
     constructor(props) {
         super(props);
@@ -71,7 +72,7 @@ class App extends Component {
     }
 
     getData() {
-        fetch('http://localhost:8080/api/questions')
+        fetch(`${this.API_URL}/questions`)
             .then(response => response.json())
             .then(json => {
                 this.setState({
