@@ -61,9 +61,9 @@ class App extends Component {
         fetch(`${this.API_URL}/answers/to/${question_id}`)
             .then(response => response.json())
             .then(json => {
-                console.log("##");
+                /*console.log("##");
                 console.log(json);
-                console.log("##");
+                console.log("##");*/
                 this.setState({
                     answers: json
                 });
