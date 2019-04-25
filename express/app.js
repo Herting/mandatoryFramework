@@ -5,7 +5,7 @@ const app = express();
 const mongoose = require('mongoose');
 
 //let dbUrl = 'mongodb://localhost/hertingsQuestionsV1';
-let dbUrl = 'mongodb+srv://dbUser:1234@cluster0-brpjt.mongodb.net/test?retryWrites=true\n';
+let dbUrl = 'mongodb+srv://dbUser:1234@cluster0-brpjt.mongodb.net/mandatoryQA?retryWrites=true';
 
 /****** Configuration *****/
 app.use(bodyParser.json());                 // Make sure all json data is parsed

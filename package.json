@@ -11,12 +11,10 @@
     "react-scripts": "2.1.8"
   },
   "scripts": {
-    "start": "cd express && node app.js",
-    "start:dev": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "preinstall": "cd express && npm install"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
