@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');           // Log all HTTP requests to the console
 const app = express();
 const mongoose = require('mongoose');
+const path = require('path');
+
 
 //let dbUrl = 'mongodb://localhost/hertingsQuestionsV1';
 let dbUrl = 'mongodb+srv://dbUser:1234@cluster0-brpjt.mongodb.net/mandatoryQA?retryWrites=true';
@@ -20,8 +22,9 @@ const port = (process.env.PORT || 8080);
 
 /****** Middleware *****/
 
-// Additional headers to avoid triggering CORS security errors in the browser
-// Read more: https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
+// Additional headers for the response to avoid trigger CORS security
+// errors in the browser
+// Read more here: https://en.wikipedia.org/wiki/Cross-origin_resource_sharing
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Content-Type, Accept");
@@ -31,8 +34,9 @@ app.use((req, res, next) => {
     if ('OPTIONS' === req.method) {
         // respond with 200
         console.log("Allowing OPTIONS");
-        res.sendStatus(200);
-    } else {
+        res.send(200);
+    }
+    else {
         // move on
         next();
     }
@@ -74,4 +78,14 @@ app.listen(port, () => console.log(`API running on port ${port}!`));
 
 mongoose.connect(dbUrl, {useNewUrlParser: true}, (err) => {
     console.log('mongo db connection', err);
+});
+
+app.use(express.static(path.join(__dirname, '../build')));
+
+/**** Routes ****/
+app.get('/api/hello', (req, res) => res.json({msg: "Hello from the API"}));
+
+/**** Reroute all unknown requests to the React index.html ****/
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'));
 });
