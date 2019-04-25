@@ -21,7 +21,7 @@ class QuestionList extends Component {
                     <Link to={`/question/${elm.id}`}>
                         <h2>{elm.title}</h2>
                         <span className="date">{elm.created}</span>
-                        <p>{description}<span className="author">Asked by Herting</span></p>
+                        <p>{description}<span className="author">Asked by {elm.author}</span></p>
                     </Link>
                 </div>
             )
