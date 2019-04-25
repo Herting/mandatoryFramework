@@ -3,6 +3,7 @@ import Answer from "./Answer";
 import AnswerForm from "./AnswerForm";
 
 class Question extends Component {
+    API_URL = process.env.REACT_APP_API_URL;
 
     constructor(props) {
         super(props);
@@ -15,7 +16,7 @@ class Question extends Component {
         //this.addAnswer = this.addAnswer.bind(this);
         //this.getAnswers = this.getAnswers.bind(this);
 
-        fetch('http://localhost:8080/api/questions/' + props.match.params.id)
+        fetch(`${this.API_URL}/questions/` + props.match.params.id)
             .then(response => response.json())
             .then(json => {
                 this.setState({

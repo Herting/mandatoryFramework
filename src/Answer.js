@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 class Answer extends Component {
+    API_URL = process.env.REACT_APP_API_URL;
 
     constructor(props) {
         super(props);
@@ -14,7 +15,7 @@ class Answer extends Component {
     }
 
     voteUp() {
-        fetch('http://localhost:8080/api/answers/voteup/' + this.state.answer.id, {
+        fetch(`${this.API_URL}/answers/voteup/` + this.state.answer.id, {
             method: 'PUT'
         })
             .then(response => response.json())
@@ -31,7 +32,7 @@ class Answer extends Component {
     }
 
     voteDown() {
-        fetch('http://localhost:8080/api/answers/votedown/' + this.state.answer.id, {
+        fetch(`${this.API_URL}/answers/votedown/` + this.state.answer.id, {
             method: 'PUT'
         })
             .then(response => response.json())
