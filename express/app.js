@@ -68,8 +68,8 @@ let usersRouter = require('./users_router')();
 app.use('/api/users', usersRouter);
 
 /****** Error handling ******/
-app.use(function (err, req, res) {
-    console.error(err.stack);
+app.use(function (err, req, res, next) {
+    console.error(err);
     res.status(500).send({msg: 'Something broke!'})
 });
 
