@@ -15,7 +15,6 @@ class QuestionList extends Component {
                 description = elm.description.substr(0, 200) + "..";
             }
 
-
             list.push(
                 <div className="question" key={elm.id}>
                     <Link to={`/question/${elm.id}`}>
@@ -31,7 +30,6 @@ class QuestionList extends Component {
         return (
             <div className="noPadding">
                 <QuestionForm addQuestion={this.props.addQuestion} />
-
                 {list}
             </div>
         );
